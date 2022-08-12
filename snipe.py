@@ -44,14 +44,16 @@ driver.find_element(By.ID, 'pwd').send_keys(PASSWORD)
 driver.find_element(By.CSS_SELECTOR, 'input[type=submit]').click()
 sleep(5)
 
-while True:
-    driver.get(
-        'https://zambeel.lums.edu.pk/psc/ps_7/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL')
-    print('REFRESHING...', end=' ')
+ENROLLMENT_URL = 'https://zambeel.lums.edu.pk/psc/ps_7/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL'
 
-    RADIO_ID = 'SSR_DUMMY_RECV1$sels$1$$0'
-    CONTINUE_ID = 'DERIVED_SSS_SCT_SSR_PB_GO'
-    COURSE_STATUS_CSS = r'#win7divDERIVED_REGFRM1_SSR_STATUS_LONG\$0 > div > img'
+RADIO_ID = 'SSR_DUMMY_RECV1$sels$1$$0'
+CONTINUE_ID = 'DERIVED_SSS_SCT_SSR_PB_GO'
+COURSE_STATUS_CSS = r'#win7divDERIVED_REGFRM1_SSR_STATUS_LONG\$0 > div > img'
+
+while True:
+    driver.get(ENROLLMENT_URL)
+
+    print('REFRESHING...', end=' ')
 
     WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, CONTINUE_ID)))
