@@ -1,5 +1,4 @@
 import argparse
-from time import sleep
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -42,7 +41,9 @@ WebDriverWait(driver, 10).until(EC.element_to_be_clickable(
 driver.find_element(By.ID, 'userid').send_keys(ROLL)
 driver.find_element(By.ID, 'pwd').send_keys(PASSWORD)
 driver.find_element(By.CSS_SELECTOR, 'input[type=submit]').click()
-sleep(5)
+
+WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.CSS_SELECTOR, 'body')))
 
 ENROLLMENT_URL = 'https://zambeel.lums.edu.pk/psc/ps_7/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL'
 
@@ -73,7 +74,6 @@ while True:
         enroll()
         break
 
-    print('CLOSED')
-
+    # print('CLOSED')
 
 driver.close()

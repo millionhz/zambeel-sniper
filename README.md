@@ -2,6 +2,8 @@
 
 # Zambeel Sniper
 
+> NOTE: The script only works for **FALL 2022**
+
 Snipe Courses on Zambeel.
 
 The script monitors the first course in the shopping list and automatically enrolls as soon as it opens.
